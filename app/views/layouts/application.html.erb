@@ -2,55 +2,47 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <script src="https://kit.fontawesome.com/53fcd7bbf7.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <body>
-  <header>
-    <h2><%= link_to 'Bookers',root_path %></h2>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "Home", root_path  %>
-      </li>
-      <li>
-        <%= link_to "Users", users_path  %>
-      </li>
-      <li>
-        <%= link_to "Books", books_path  %>
-      </li>
-      <li>
-        <%= link_to "Log out", destroy_user_session_path, method: :delete %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "Home", root_path  %>
-      </li>
-      <li>
-        <%= link_to "About", homes_about_path  %>
-      </li>
-      <li>
-        <%= link_to "Sign Up", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "Log in", new_user_session_path %>
-      </li>
-    <% end %>
-  </header>
-  <%= yield %>
-  <footer>
-    <div class ="container mt-5">
-      <div class="row">
-        <div class = "mx-auto">
-          <p>CopyRight Infratop.inc</p>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+          <%= link_to 'Bookers',root_path,class: 'navbar-brand' %>
+            <ul class="navbar-nav ml-auto">
+              <% if user_signed_in? %>
+                <li><%= link_to "Home", root_path %></li>
+                <li><%= link_to "Users", users_path %></li>
+                <li><%= link_to "Books", books_path %></li>
+                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to "Home", root_path %></li>
+                <li><%= link_to "About", homes_about_path %></li>
+                <li>
+                  <%= link_to "Sign Up", new_user_registration_path %></li>
+                <li><%= link_to "Log in", new_user_session_path %></li>
+              <% end %>
+            </ul>
+        </div>
+      </nav>
+    </header>
+    <main class="mb-auto">
+    <%= yield %>
+    </main>
+    <footer>
+      <div class="container mt-5">
+        <div class="row">
+          <div class="mx-auto">
+            <p>CopyRight Infratop.inc</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+  </body>
 </html>

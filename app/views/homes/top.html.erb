@@ -1,10 +1,16 @@
-<p>Homes#top</p>
-<p>Find me in app/views/homes/top.html.erb</p>
+<p>views/homes/top.html.erb</p>
 
-<h1>welcome to <strong>Bookers!!</strong></h1>
-<p>In<strong>Bookers,</strong></p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto">
+      <h1>welcome to <i class="fas fa-book"></i><strong>Bookers!!</strong></h1>
+<p>In<i class="fas fa-book"></i><strong>Bookers,</strong></p>
 <p>you can share and exchange your opinions,inpressions,and emotions</p>
 <p>about various books!</p>
 
-<%= link_to "Log in", new_user_session_path %><br>
-<%= link_to "Sign Up", new_user_registration_path %>
+<%= link_to "Log in", new_user_session_path,class:"btn btn-primary btn-block" %><br>
+<%= link_to "Sign Up", new_user_registration_path,class:"btn btn-success btn-block" %>
+    </div>
+  </div>
+</div>
+
