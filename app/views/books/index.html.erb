@@ -1,1 +1,69 @@
-<h1>books/index</h1>
+<p>books/index</p>
+
+<div class ="container px-5 px-sm-0">
+  <div class ="row">
+    <div class ="col-md-3">
+      <h2>User info</h2>
+      <p><%= image_tag current_user.get_profile_image("63x63") %></p>
+      <table class="table">
+        <tbody>
+          <tr></tr>
+          <tr>
+            <th>name</th>
+            <th><%= current_user.name %></th>
+          </tr>
+          <tr>
+            <th>introduction</th>
+            <th><%= current_user.introduction %></th>
+          </tr>
+        </tbody>
+      </table>
+      <div class ="row">
+        <%= link_to edit_user_path(current_user.id), class: 'btn btn-outline-secondary btn-block' do %>
+        <i class = "fas fa-user-cog"></i>
+        <% end %>
+      </div>
+      <h2>New Book</h2>
+        <%= form_with model: @book,url:'/books',method: :post, local:true do |f| %>
+          <p>Title</p>
+          <%= f.text_field :title %>
+
+          <p>Opinion</p>
+          <%= f.text_area :body %>
+          <br>
+          <%= f.submit 'Create Book',class: "btn btn-success" %>
+        <% end %>
+    </div>
+
+    <div class ="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+        <% @books.each do |b| %>
+        <tr>
+          <td>
+          <%= link_to user_path(b.user.id) do %>
+            <%= image_tag current_user.get_profile_image("40x40") %>
+          <% end %>
+          </td>
+          <td>
+          <%= link_to book_path(b.id) do %>
+            <%= b.title %>
+          <% end %>
+          </td>
+          <td><%= b.body %></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
