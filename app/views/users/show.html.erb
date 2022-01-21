@@ -1,1 +1,32 @@
-<h1>users/show</h1>
+<p>users/show</p>
+
+<%= render 'books/list' %>
+
+   <div class ="col-md-8 offset-md-1">
+      <h2>Books</h2>
+      <table class='table table-hover table-inverse'>
+        <thead>
+          <tr>
+            <th></th>
+            <th>Title</th>
+            <th>Opinion</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @books.each do |b| %>
+          <tr>
+            <td><%= image_tag @user.get_profile_image("40x40") %></td>
+              <td>
+                <%= link_to book_path(b.id) do %>
+                <%= b.title %>
+                <% end %>
+              </td>
+              <td><%= b.body %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
