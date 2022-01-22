@@ -1,15 +1,17 @@
-<p>books/index</p
+<p>books/index</p>
 
-  <% if @book.errors.any? %>
-  <h2><%= @book.errors.count %>errors prohibited this obj being saved:</h2>
-  <ul>
-    <% @book.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+  <div class ="alert">
+    <% if @book.errors.any? %>
+      <h2><%= @book.errors.count %>errors prohibited this obj being saved:</h2>
+      <ul>
+        <% @book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+  </div>
 
-<%= render 'list' %>
+<%= render 'list',user:@user,book:@book %>
 
     <div class ="col-md-8 offset-md-1">
       <h2>Books</h2>

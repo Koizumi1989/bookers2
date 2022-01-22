@@ -1,6 +1,6 @@
 <p>users/index</p>
 
-<%= render 'books/list' %>
+<%= render 'books/list',user:@user,book:@book  %>
 
     <div class ="col-md-8 offset-md-1">
       <h2>Users</h2>
@@ -18,7 +18,7 @@
         <tr>
           <td><%= image_tag u.get_profile_image("40x40") %></td>
           <td><%= u.name %></td>
-          <td><%= link_to "show",user_path(u.id) %></td>
+          <td><%= link_to "Show",user_path(u.id) %></td>
         </tr>
         <% end %>
         </tbody>

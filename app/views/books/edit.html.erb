@@ -1,5 +1,6 @@
 <p>books/edit</p>
 
+<div class = "alert">
 <% if @book.errors.any? %>
   <%= @book.errors.count %>errors prohibited this book from being saved:
   <ul>
@@ -8,6 +9,7 @@
     <% end %>
   </ul>
 <% end %>
+</div>
 
 <div class = "container">
   <div class ="row">

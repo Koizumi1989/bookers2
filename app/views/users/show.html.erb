@@ -1,6 +1,6 @@
 <p>users/show</p>
 
-<%= render 'books/list' %>
+<%= render 'books/list',user:@user,book:@book  %>
 
    <div class ="col-md-8 offset-md-1">
       <h2>Books</h2>
@@ -16,8 +16,12 @@
         <tbody>
           <% @books.each do |b| %>
           <tr>
-            <td><%= image_tag @user.get_profile_image("40x40") %></td>
-              <td>
+            <td>
+            <%= link_to user_path(@user.id) do %>
+            <%= image_tag @user.get_profile_image("40x40") %>
+            <% end %>
+            </td>
+            <td>
                 <%= link_to book_path(b.id) do %>
                 <%= b.title %>
                 <% end %>

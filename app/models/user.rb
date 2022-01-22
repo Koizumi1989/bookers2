@@ -4,10 +4,16 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  validates :name, presence: true
+  validates :name, presence: true, length: {minimum: 2,maximum: 20},uniqueness: true
+  validates :introduction,length: {maximum: 50}
 
   has_many :books, dependent: :destroy
+  # 1側：user N側：book
+  #ユーザー側から見るとbook記事はいくつも持っているかたちになっている。
+  #dependent: :destroyは特定のユーザーを消すと記事も消えるということ。
   has_one_attached :profile_image
+  # has_one_attached :profile_imageという記述により、profile_imageという
+  # 名前でActiveStorageでプロフィール画像を保存できるように設定しました。
 
   def get_profile_image(size)
     unless profile_image.attached?
