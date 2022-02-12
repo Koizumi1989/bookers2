@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     user_path(resource)
+    #(resource)はデバイスでuser情報が保存されている変数。
+    #(resource)はuser_path(User.find(params[:id])と同じ意味
   end
 
   def after_sign_out_path_for(resource)

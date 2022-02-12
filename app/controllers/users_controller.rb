@@ -13,6 +13,8 @@ class UsersController < ApplicationController
     @book = Book.new
     @user = User.find(params[:id])
     @books = Book.where(user: @user)
+    # 上の@bookesと同じ意味。@books = Book.where(user_id:@user.id)
+    # user_idが@user.idと同じになっているbookを取ってきて、@booksに入れる。
   end
 
   def edit
